@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10091c">
+<title>UAM+ | Uma Aventura Milagrosa</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #100b18;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #090610;
+  padding: 19px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid #352044;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.logo span {
+  color: #ec315d;
+}
+
+nav a {
+  color: #eee;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 14px;
+}
+
+.hero {
+  padding: 75px 7%;
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 80% 30%, #7227a6 0%, transparent 35%),
+    linear-gradient(120deg, #170c28, #350d3e, #160815);
+}
+
+.tag {
+  color: #e9a6ff;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: clamp(34px, 7vw, 58px);
+  max-width: 600px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #ded2e8;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.button {
+  display: inline-block;
+  background: #9b36d6;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 7px;
+  border: none;
+  margin-top: 23px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.button:hover {
+  background: #bd4bf5;
+}
+
+section {
+  padding: 35px 6%;
+}
+
+section h2 {
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: #21152d;
+  border: 1px solid #382448;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.poster {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(145deg, #501b80, #17101f 65%, #a51c48);
+}
+
+.poster span {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.card-info {
+  padding: 14px;
+}
+
+.card-info h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
+
+.card-info p {
+  font-size: 12px;
+  color: #c4b4d1;
+  line-height: 1.5;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  background: #090610;
+  color: #aa9ab8;
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+footer strong {
+  color: #e34a76;
+}
+
+@media(max-width: 420px) {
+  nav a {
+    margin-left: 9px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 55px 6%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">UAM<span>+</span></div>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#temporadas">Temporadas</a>
+    <a href="#episodios">Episódios</a>
+  </nav>
+</header>
+
+<main>
+
+<div class="hero" id="inicio">
+  <div class="tag">UNIVERSO UAM+</div>
+  <h1>Uma Aventura Milagrosa</h1>
+  <p>
+    Entre em um universo de magia, aventura,
+    mistérios e grandes descobertas.
+    Sua próxima história começa aqui.
+  </p>
+  <a href="#temporadas" class="button">
+    Explorar temporadas ▶
+  </a>
+</div>
+
+<section id="temporadas">
+  <h2>Temporadas</h2>
+
+  <div class="cards">
+    <article class="card">
+      <div class="poster">
+        <span>1ª TEMPORADA</span>
+      </div>
+      <div class="card-info">
+        <h3>Temporada 1</h3>
+        <p>O começo de uma grande aventura.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="episodios">
+  <h2>Em destaque</h2>
+
+  <div class="cards">
+    <article class="card">
+      <div class="poster">
+        <span>O DESPERTAR DOS MIRACULOUS</span>
+      </div>
+      <div class="card-info">
+        <h3> Episódio 1</h3>
+        <p>O início de Uma Aventura Milagrosa.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <strong>UAM+</strong>
+  <p>Uma Aventura Milagrosa</p>
+  <p>Uma plataforma dedicada ao universo da série.</p>
+</footer>
+
+</body>
+  </html>
+  
