@@ -77,7 +77,7 @@ const firebaseConfig = {
     const status = document.getElementById("status");
     const login = document.getElementById("login");
     const logout = document.getElementById("logout");
-
+login.textContent = "BOTÃO TESTE";
     login.onclick = async () => {
       try {
         await signInWithPopup(auth, provider);
