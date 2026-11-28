@@ -1,385 +1,239 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#170b29">
-  <title>UAM+ | Uma Aventura Milagrosa</title>
-  <style>
-    :root {
-      --roxo: #8b35d1;
-      --roxo-escuro: #170b29;
-      --preto: #09070d;
-      --dourado: #d6ae55;
-      --branco: #f8f3ff;
-      --cinza: #bdb4c8;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; background: var(--preto); color: var(--branco); font-family: Arial, sans-serif; }
-    header {
-      background: linear-gradient(110deg, #100819, #30104c);
-      padding: 15px 5%; display: flex; align-items: center; justify-content: space-between;
-      gap: 15px; flex-wrap: wrap; border-bottom: 1px solid #68418a;
-    }
-    .marca { display: flex; align-items: center; gap: 10px; }
-    .logo { width: 55px; height: 55px; object-fit: contain; }
-    .nome { color: var(--dourado); font-size: 27px; font-weight: 900; letter-spacing: 2px; }
-    nav { display: flex; gap: 17px; flex-wrap: wrap; }
-    nav button, .botao { background: none; border: 0; color: white; font-size: 15px; cursor: pointer; }
-    nav button:hover { color: var(--dourado); }
-    .busca {
-      padding: 10px 14px; border-radius: 22px; border: 1px solid #76519a;
-      background: #21142d; color: white; width: min(220px, 100%);
-    }
-    .destaque {
-      min-height: 390px; padding: 65px 7%; display: flex; align-items: center;
-      background: linear-gradient(90deg, rgba(9,7,13,.98), rgba(9,7,13,.72), rgba(9,7,13,.2)),
-      radial-gradient(circle at 75% 40%, #7834a9, #241034 45%, #09070d 80%);
-    }
-    .destaque-conteudo { max-width: 570px; }
-    .etiqueta { color: var(--dourado); letter-spacing: 3px; font-size: 12px; font-weight: bold; }
-    h1 { font-size: clamp(35px, 7vw, 58px); margin: 12px 0; }
-    .destaque p { color: #e1d8e9; line-height: 1.6; max-width: 520px; }
-    .acao {
-      display: inline-block; padding: 13px 22px; margin: 12px 8px 0 0; border-radius: 7px;
-      border: 0; background: var(--dourado); color: #160e1e; font-weight: bold; cursor: pointer;
-    }
-    .acao.secundaria { background: #382449; color: white; border: 1px solid #8c65a8; }
-    main { padding: 30px 5%; }
-    .secao-titulo { font-size: 23px; margin: 8px 0 18px; }
-    .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(155px, 1fr)); gap: 18px; }
-    .cartao {
-      background: #18121f; border: 1px solid #30213e; border-radius: 10px; overflow: hidden;
-      cursor: pointer; transition: transform .2s, border .2s;
-    }
-    .cartao:hover { transform: translateY(-5px); border-color: var(--dourado); }
-    .capa {
-      height: 215px; display: flex; justify-content: center; align-items: center; text-align: center;
-      padding: 12px; background: linear-gradient(145deg, #7134a1, #21102e 65%, #09070d);
-      color: #f5d995; font-size: 20px; font-weight: bold; overflow: hidden;
-    }
-    .capa img { width: 100%; height: 100%; object-fit: cover; }
-    .cartao-info { padding: 12px; }
-    .cartao-info h3 { margin: 0 0 6px; font-size: 16px; }
-    .cartao-info p { margin: 0; color: var(--cinza); font-size: 13px; }
-    .pagina { display: none; }
-    .pagina.ativa { display: block; }
-    .voltar { color: var(--dourado); background: none; border: 0; font-size: 16px; cursor: pointer; margin-bottom: 20px; }
-    .episodio {
-      background: #1b1422; padding: 15px; border: 1px solid #39264a; border-radius: 8px;
-      margin: 10px 0; display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    }
-    .episodio button {
-      background: var(--dourado); color: #170b29; border: 0; padding: 9px 14px;
-      border-radius: 6px; font-weight: bold; cursor: pointer;
-    }
-    video { width: 100%; max-height: 65vh; background: black; border-radius: 10px; }
-    .player-area { max-width: 900px; margin: auto; }
-    .aviso { color: var(--cinza); font-size: 13px; line-height: 1.5; }
-    footer { margin-top: 50px; padding: 25px; text-align: center; background: #100a17; color: var(--cinza); border-top: 1px solid #39264a; }
-    @media (max-width: 600px) {
-      header { justify-content: center; }
-      nav { justify-content: center; }
-      .destaque { min-height: 340px; padding: 45px 6%; }
-      .grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-      .capa { height: 185px; }
-      main { padding: 24px 4%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10091d">
+<title>UAM+ | Streaming</title>
+<style>
+:root{--bg:#09070f;--panel:#171020;--panel2:#21152d;--purple:#8d45d6;--purple2:#c18aff;--gold:#e6c16b;--text:#fffaff;--muted:#bdb1c9;--line:#38264a}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#32154a 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+button,input{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:#10091deF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff18;padding:12px clamp(16px,4vw,58px);display:flex;align-items:center;gap:22px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;min-width:max-content}.brand img{width:43px;height:43px;object-fit:contain}.brand-name{font-size:25px;font-weight:950;letter-spacing:2px;color:var(--gold)}
+nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}nav button,.navbtn{background:transparent;color:#e8deef;border:0;padding:10px 12px;border-radius:9px}nav button:hover,nav button.active{background:#ffffff12;color:var(--gold)}
+.search{width:min(250px,27vw);background:#21152d;border:1px solid #59416c;color:white;padding:11px 15px;border-radius:25px;outline:none}.search:focus{border-color:var(--purple2)}
+main{min-height:65vh}.page{display:none}.page.active{display:block}
+.hero{min-height:490px;display:flex;align-items:center;padding:65px clamp(20px,8vw,110px);position:relative;overflow:hidden;background:linear-gradient(90deg,#09070ff5 0%,#09070fc9 48%,#09070f33 100%),radial-gradient(circle at 78% 40%,#8b3db5 0,#35164c 30%,#11091b 65%);border-bottom:1px solid var(--line)}
+.hero:before{content:"🦋  🐞  🐈‍⬛  🐝  🦊  🐢  🦚";position:absolute;right:4%;bottom:28px;font-size:clamp(22px,3vw,38px);letter-spacing:12px;opacity:.65;filter:drop-shadow(0 0 15px #b36cff)}
+.hero-copy{max-width:650px;position:relative;z-index:1}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
+h1{font-size:clamp(38px,6.4vw,76px);line-height:1.02;margin:14px 0 18px;letter-spacing:-2px}.hero p{max-width:570px;color:#e3d8eb;line-height:1.7;font-size:16px}
+.btn{border:0;border-radius:9px;padding:13px 19px;font-weight:800;margin:12px 8px 0 0;background:linear-gradient(110deg,#f1d58c,#d6a94c);color:#1b1022;box-shadow:0 8px 25px #0005}.btn.secondary{background:#ffffff12;border:1px solid #ffffff35;color:white;box-shadow:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.content{padding:30px clamp(16px,4vw,58px) 55px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 17px}.section-head h2{font-size:22px;margin:0}.section-head small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:18px}
+.card{border:1px solid #ffffff12;background:linear-gradient(160deg,#21162c,#120d19);border-radius:13px;overflow:hidden;cursor:pointer;transition:.22s;min-width:0}.card:hover{transform:translateY(-5px);border-color:#a56ad1;box-shadow:0 14px 35px #0008}
+.poster{height:230px;background:radial-gradient(circle at 50% 35%,#75409b,#271638 60%,#100b16);display:grid;place-items:center;overflow:hidden;color:#f4d990;text-align:center;font-size:22px;font-weight:900;padding:15px}.poster img{width:100%;height:100%;object-fit:cover}.card-info{padding:13px}.card-info h3{font-size:15px;margin:0 0 7px}.card-info p{font-size:12px;color:var(--muted);margin:0}
+.empty,.status{color:var(--muted);padding:18px 0;line-height:1.6}.error{color:#ffb7b7}
+.detail-wrap{padding:30px clamp(16px,6vw,85px) 60px}.back{border:0;background:none;color:var(--gold);padding:10px 0 20px;font-weight:700}.detail-hero{display:grid;grid-template-columns:minmax(180px,280px) 1fr;gap:28px;align-items:start}.detail-poster{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:14px;background:#241432;border:1px solid var(--line)}.detail-copy h1{font-size:clamp(30px,5vw,52px)}.detail-copy p{color:var(--muted);line-height:1.7;max-width:720px}
+.season{margin-top:32px}.season h3{color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:12px}.episode{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--panel);border:1px solid #ffffff12;padding:14px 16px;border-radius:10px;margin:9px 0}.episode button{border:0;background:#8d45d6;color:white;border-radius:7px;padding:9px 13px;font-weight:700}
+.player{max-width:1000px;margin:auto;padding:30px 18px 60px}.player video{width:100%;max-height:68vh;background:#000;border-radius:14px;border:1px solid var(--line)}.player h2{margin-top:20px}
+footer{text-align:center;padding:30px 15px;background:#100a17;border-top:1px solid var(--line);color:var(--muted)}footer strong{color:var(--gold);letter-spacing:2px}
+.loading{display:flex;align-items:center;gap:12px;color:var(--muted)}.dot{width:8px;height:8px;border-radius:50%;background:var(--purple2);box-shadow:0 0 14px var(--purple2)}
+@media(max-width:760px){header{gap:10px;flex-wrap:wrap;justify-content:center}nav{order:3;width:100%;justify-content:center}.search{width:100%;max-width:360px}.hero{min-height:430px;padding:48px 22px}.hero:before{right:0;letter-spacing:3px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.poster{height:190px}.detail-hero{grid-template-columns:1fr}.detail-poster{max-width:210px}.episode{align-items:flex-start}.episode button{white-space:nowrap}}
+</style>
 </head>
 <body>
-  <header>
-    <div class="marca">
-      <img class="logo" src="1794969678965.png" alt="Logo UAM+">
-      <div class="nome">UAM+</div>
+<header>
+  <div class="brand"><img src="1794969678965.png" alt="UAM+"><span class="brand-name">UAM+</span></div>
+  <nav>
+    <button class="active" id="nav-inicio" onclick="showPage('home')">Início</button>
+    <button id="nav-catalogo" onclick="showPage('catalog')">Séries</button>
+    <button id="nav-favoritos" onclick="showFavorites()">Minha lista</button>
+  </nav>
+  <input class="search" id="searchInput" type="search" placeholder="Buscar séries e aventuras..." oninput="searchSeries()">
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">✦ Um universo de histórias ✦</div>
+      <h1>Histórias extraordinárias começam aqui.</h1>
+      <p>Entre em mundos de magia, mistério, aventura e fantasia. Descubra suas séries favoritas no UAM+.</p>
+      <button class="btn" onclick="openFeatured()">▶ Explorar destaque</button>
+      <button class="btn secondary" onclick="showPage('catalog')">Ver catálogo</button>
     </div>
-    <nav>
-      <button onclick="mostrarPagina('inicio')">Início</button>
-      <button onclick="mostrarPagina('catalogo')">Séries</button>
-      <button onclick="mostrarFavoritos()">Minha lista</button>
-    </nav>
-    <input class="busca" id="campoBusca" type="search" placeholder="Buscar séries..." oninput="pesquisar()">
-  </header>
+  </div>
+  <div class="content">
+    <div class="section-head"><h2>Em destaque ✨</h2><small>UAM+ Originals</small></div>
+    <div class="grid" id="featured"><p class="status">Conectando ao catálogo...</p></div>
+    <div class="section-head" style="margin-top:38px"><h2>Continue explorando</h2><small>Todo o universo UAM+</small></div>
+    <div class="grid" id="homeCatalog"><p class="status">Carregando...</p></div>
+  </div>
+</section>
 
-  <section id="inicio" class="pagina ativa">
-    <div class="destaque">
-      <div class="destaque-conteudo">
-        <div class="etiqueta">SEU UNIVERSO DE HISTÓRIAS</div>
-        <h1>Uma Aventura Milagrosa</h1>
-        <p>Magia, mistério, aventura e novos heróis. Entre em um universo cheio de surpresas e descubra histórias extraordinárias.</p>
-        <button class="acao" onclick="abrirSerie('uma-aventura-milagrosa')">▶ Assistir série</button>
-        <button class="acao secundaria" onclick="mostrarPagina('catalogo')">Explorar catálogo</button>
-      </div>
-    </div>
-    <main>
-      <h2 class="secao-titulo">Destaques</h2>
-      <div class="grade" id="destaques"><p class="aviso">Carregando séries...</p></div>
-      <h2 class="secao-titulo" style="margin-top:35px">Todas as séries</h2>
-      <div class="grade" id="inicioCatalogo"><p class="aviso">Carregando séries...</p></div>
-    </main>
-  </section>
+<section id="catalog" class="page">
+  <div class="content">
+    <div class="section-head"><h2>Catálogo completo</h2><small>Suas próximas aventuras</small></div>
+    <div class="grid" id="catalogGrid"><p class="status">Carregando catálogo...</p></div>
+  </div>
+</section>
 
-  <section id="catalogo" class="pagina">
-    <main>
-      <h2 class="secao-titulo">Catálogo</h2>
-      <p class="aviso">Descubra as séries disponíveis no UAM+.</p>
-      <div class="grade" id="catalogoCompleto"><p class="aviso">Carregando séries...</p></div>
-    </main>
-  </section>
+<section id="details" class="page">
+  <div class="detail-wrap">
+    <button class="back" onclick="showPage('catalog')">← Voltar ao catálogo</button>
+    <div id="detailsContent"></div>
+  </div>
+</section>
 
-  <section id="detalhes" class="pagina">
-    <main>
-      <button class="voltar" onclick="mostrarPagina('catalogo')">← Voltar</button>
-      <div id="detalhesConteudo"></div>
-    </main>
-  </section>
+<section id="favorites" class="page">
+  <div class="content">
+    <div class="section-head"><h2>Minha lista ♥</h2></div>
+    <div class="grid" id="favoritesGrid"></div>
+  </div>
+</section>
 
-  <section id="favoritos" class="pagina">
-    <main>
-      <h2 class="secao-titulo">Minha lista</h2>
-      <p class="aviso">Aqui ficam as séries que você favoritou.</p>
-      <div class="grade" id="listaFavoritos"></div>
-    </main>
-  </section>
+<section id="watch" class="page">
+  <div class="player">
+    <button class="back" onclick="backToDetails()">← Voltar para a série</button>
+    <h2 id="videoTitle">Assistir episódio</h2>
+    <video id="videoPlayer" controls playsinline preload="metadata">Seu navegador não suporta vídeo.</video>
+    <p class="status" id="videoMessage">O episódio será reproduzido aqui.</p>
+  </div>
+</section>
+</main>
 
-  <section id="assistir" class="pagina">
-    <main class="player-area">
-      <button class="voltar" onclick="voltarDetalhes()">← Voltar</button>
-      <h2 id="tituloVideo">Assistir episódio</h2>
-      <video id="videoPlayer" controls playsinline>Seu navegador não consegue reproduzir este vídeo.</video>
-      <p class="aviso" id="avisoVideo">Adicione o endereço do vídeo no cadastro do episódio.</p>
-    </main>
-  </section>
+<footer><strong>UAM+</strong><p>Uma Aventura Milagrosa</p><small>🦋 🐞 🐈‍⬛ 🐝 🦊 🐢 🦚 · Um universo de aventuras</small></footer>
 
-  <footer>
-    <strong style="color:#d6ae55">UAM+</strong>
-    <p>Uma Aventura Milagrosa</p>
-    <small>Entre em um universo de aventuras.</small>
-  </footer>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
-  <script>
-    let series = [];
-    let serieAtual = null;
+/* Este é o projeto Firebase que já está configurado no index.html publicado. */
+const firebaseConfig = {
+  apiKey: "AIzaSyDhQrg_NofWqyNPKkJfOHwmVwSXgjubvWk",
+  authDomain: "uam-plus-f4519.firebaseapp.com",
+  projectId: "uam-plus-f4519",
+  storageBucket: "uam-plus-f4519.firebasestorage.app",
+  messagingSenderId: "617099307712",
+  appId: "1:617099307712:web:4d99dc73c6cb91f89f1b25",
+  measurementId: "G-0LP7M7E9EE"
+};
 
-    function escapar(texto) {
-      return String(texto ?? "").replace(/[&<>"']/g, caractere => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-      })[caractere]);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+let series = [];
+let currentSeries = null;
+let previousPage = "details";
+const active = value => value !== false && value !== "false";
+const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  const navId = id==="home"?"nav-inicio":id==="catalog"?"nav-catalogo":id==="favorites"?"nav-favoritos":null;
+  if(navId) document.getElementById(navId).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function card(s){
+  const cover=s.imagem ? `<img src="${safe(s.imagem)}" alt="Capa de ${safe(s.titulo)}" onerror="this.parentElement.innerHTML='🦋<br>${safe(s.titulo)}'">` : `🦋<br>${safe(s.titulo)}`;
+  return `<article class="card" onclick="openSeries('${safe(s.id)}')"><div class="poster">${cover}</div><div class="card-info"><h3>${safe(s.titulo)}</h3><p>${safe(s.categoria)}</p></div></article>`;
+}
+function paintCatalog(){
+  const markup=series.map(card).join("");
+  const empty='<p class="empty">Ainda não há séries publicadas neste catálogo.</p>';
+  document.getElementById("featured").innerHTML=markup||empty;
+  document.getElementById("homeCatalog").innerHTML=markup||empty;
+  document.getElementById("catalogGrid").innerHTML=markup||empty;
+}
+function openSeries(id){
+  const s=series.find(x=>x.id===id);
+  if(!s){alert("Esta série ainda não foi carregada.");return;}
+  currentSeries=s;
+  const favs=JSON.parse(localStorage.getItem("uam_favoritos")||"[]");
+  const isFav=favs.includes(id);
+  let out=`<div class="detail-hero"><div>${s.imagem?`<img class="detail-poster" src="${safe(s.imagem)}" alt="Capa">`:`<div class="detail-poster" style="display:grid;place-items:center;font-size:70px">🦋</div>`}</div><div class="detail-copy"><div class="eyebrow">UAM+ ORIGINAL</div><h1>${safe(s.titulo)}</h1><p>${safe(s.categoria)}</p><p>${safe(s.descricao)}</p><button class="btn" onclick="toggleFavorite('${safe(id)}')">${isFav?"★ Remover da minha lista":"☆ Adicionar à minha lista"}</button></div></div>`;
+  if(!s.temporadas.length) out+='<p class="empty">Temporadas ainda não cadastradas.</p>';
+  s.temporadas.forEach((t,ti)=>{
+    out+=`<div class="season"><h3>${safe(t.nome)}</h3>`;
+    if(!t.episodios.length) out+='<p class="empty">Nenhum episódio publicado nesta temporada.</p>';
+    t.episodios.forEach((e,ei)=>{out+=`<div class="episode"><span>${safe(e.titulo)}</span><button onclick="playEpisode(${ti},${ei})">▶ Assistir</button></div>`;});
+    out+='</div>';
+  });
+  document.getElementById("detailsContent").innerHTML=out;
+  showPage("details");
+}
+function toggleFavorite(id){
+  let f=JSON.parse(localStorage.getItem("uam_favoritos")||"[]");
+  f=f.includes(id)?f.filter(x=>x!==id):[...f,id];
+  localStorage.setItem("uam_favoritos",JSON.stringify(f));
+  openSeries(id);
+}
+function showFavorites(){
+  const f=JSON.parse(localStorage.getItem("uam_favoritos")||"[]");
+  const chosen=series.filter(s=>f.includes(s.id));
+  document.getElementById("favoritesGrid").innerHTML=chosen.length?chosen.map(card).join():'<p class="empty">Você ainda não adicionou séries à sua lista.</p>';
+  showPage("favorites");
+}
+function playEpisode(ti,ei){
+  if(!currentSeries)return;
+  const ep=currentSeries.temporadas[ti]?.episodios[ei];
+  if(!ep)return;
+  previousPage="details";
+  const player=document.getElementById("videoPlayer");
+  player.pause();player.removeAttribute("src");player.load();
+  document.getElementById("videoTitle").textContent=ep.titulo;
+  if(ep.video){player.src=ep.video;document.getElementById("videoMessage").textContent="Agora assistindo: "+ep.titulo;player.load();}
+  else document.getElementById("videoMessage").textContent="Este episódio ainda não tem um endereço de vídeo cadastrado.";
+  showPage("watch");
+}
+function backToDetails(){if(currentSeries)openSeries(currentSeries.id);else showPage("catalog");}
+function searchSeries(){
+  const term=document.getElementById("searchInput").value.trim().toLocaleLowerCase("pt-BR");
+  const result=series.filter(s=>(s.titulo+" "+s.categoria+" "+s.descricao).toLocaleLowerCase("pt-BR").includes(term));
+  document.getElementById("catalogGrid").innerHTML=result.length?result.map(card).join(""):'<p class="empty">Nenhuma série encontrada. Tente outro nome.</p>';
+  showPage("catalog");
+}
+function openFeatured(){if(series.length)openSeries(series[0].id);else showPage("catalog");}
+
+async function loadFirestore(){
+  const targets=["featured","homeCatalog","catalogGrid"];
+  targets.forEach(id=>document.getElementById(id).innerHTML='<p class="loading"><span class="dot"></span> Carregando catálogo...</p>');
+  try{
+    const [ss,ts,es]=await Promise.all([
+      getDocs(collection(db,"series")),
+      getDocs(collection(db,"temporadas")),
+      getDocs(collection(db,"episodios"))
+    ]);
+    const seasons=ts.docs.map(d=>({id:d.id,...d.data()}));
+    const episodes=es.docs.map(d=>({id:d.id,...d.data()}));
+    series=ss.docs.map(d=>({id:d.id,...d.data()}))
+      .filter(s=>active(s.ativo))
+      .map(s=>({
+        id:s.id,titulo:s.nome||s.titulo||"Série sem título",
+        categoria:s.categoria||"Fantasia • Aventura",
+        descricao:s.descricao||"",
+        imagem:s.imagem||s.capa||s.imageUrl||"",
+        temporadas:seasons.filter(t=>t.serieId===s.id&&active(t.ativo))
+          .sort((a,b)=>Number(a.numero||0)-Number(b.numero||0))
+          .map(t=>({
+            nome:t.nome||("Temporada "+(t.numero||"")),
+            episodios:episodes.filter(e=>e.temporadaId===t.id&&active(e.ativo))
+              .sort((a,b)=>Number(a.numero||0)-Number(b.numero||0))
+              .map(e=>({titulo:e.nome||e.titulo||"Episódio",video:e.videoUrl||e.video||""}))
+          }))
+      }));
+    paintCatalog();
+    if(!series.length){
+      const msg='<p class="empty">O Firebase conectou, mas a coleção <b>series</b> deste projeto está vazia ou todos os documentos estão desativados.</p>';
+      targets.forEach(id=>document.getElementById(id).innerHTML=msg);
     }
-
-    function mostrarPagina(id) {
-      document.querySelectorAll(".pagina").forEach(p => p.classList.remove("ativa"));
-      document.getElementById(id).classList.add("ativa");
-      window.scrollTo(0, 0);
-    }
-
-    function cartaoSerie(serie) {
-      const capa = serie.imagem
-        ? `<img src="${escapar(serie.imagem)}" alt="Capa de ${escapar(serie.titulo)}">`
-        : `🦋<br>${escapar(serie.titulo)}`;
-      return `
-        <article class="cartao" onclick="abrirSerie('${escapar(serie.id)}')">
-          <div class="capa">${capa}</div>
-          <div class="cartao-info">
-            <h3>${escapar(serie.titulo)}</h3>
-            <p>${escapar(serie.categoria)}</p>
-          </div>
-        </article>`;
-    }
-
-    function carregarCatalogo() {
-      const html = series.map(cartaoSerie).join("");
-      const vazio = "<p class='aviso'>Nenhuma série ativa encontrada.</p>";
-      document.getElementById("destaques").innerHTML = html || vazio;
-      document.getElementById("inicioCatalogo").innerHTML = html || vazio;
-      document.getElementById("catalogoCompleto").innerHTML = html || vazio;
-    }
-
-    function abrirSerie(id) {
-      const serie = series.find(s => s.id === id);
-      if (!serie) {
-        alert("A série ainda não foi carregada. Atualize a página e tente novamente.");
-        return;
-      }
-      serieAtual = serie;
-      const favoritos = JSON.parse(localStorage.getItem("uam_favoritos") || "[]");
-      const estaFavorita = favoritos.includes(id);
-
-      let html = `
-        <div class="etiqueta">SÉRIE UAM+</div>
-        <h1>${escapar(serie.titulo)}</h1>
-        <p>${escapar(serie.categoria)}</p>
-        <p>${escapar(serie.descricao)}</p>
-        <button class="acao secundaria" onclick="alternarFavorito('${escapar(id)}')">
-          ${estaFavorita ? "★ Remover dos favoritos" : "☆ Adicionar à minha lista"}
-        </button>
-        <h2 class="secao-titulo" style="margin-top:35px">Temporadas e episódios</h2>`;
-
-      if (!serie.temporadas.length) html += "<p class='aviso'>Temporadas ainda não cadastradas.</p>";
-
-      serie.temporadas.forEach((temporada, indice) => {
-        html += `<h3>${escapar(temporada.nome)}</h3>`;
-        if (!temporada.episodios.length) html += "<p class='aviso'>Nenhum episódio cadastrado nesta temporada.</p>";
-        temporada.episodios.forEach((ep, numero) => {
-          html += `
-            <div class="episodio">
-              <span>${escapar(ep.titulo)}</span>
-              <button onclick="reproduzir('${escapar(id)}',${indice},${numero})">▶ Assistir</button>
-            </div>`;
-        });
-      });
-
-      document.getElementById("detalhesConteudo").innerHTML = html;
-      mostrarPagina("detalhes");
-    }
-
-    function alternarFavorito(id) {
-      let favoritos = JSON.parse(localStorage.getItem("uam_favoritos") || "[]");
-      favoritos = favoritos.includes(id) ? favoritos.filter(item => item !== id) : [...favoritos, id];
-      localStorage.setItem("uam_favoritos", JSON.stringify(favoritos));
-      abrirSerie(id);
-    }
-
-    function mostrarFavoritos() {
-      const favoritos = JSON.parse(localStorage.getItem("uam_favoritos") || "[]");
-      const escolhidas = series.filter(s => favoritos.includes(s.id));
-      document.getElementById("listaFavoritos").innerHTML = escolhidas.length
-        ? escolhidas.map(cartaoSerie).join("")
-        : "<p>Você ainda não adicionou séries à sua lista.</p>";
-      mostrarPagina("favoritos");
-    }
-
-    function reproduzir(id, temporada, episodio) {
-      const serie = series.find(s => s.id === id);
-      if (!serie || !serie.temporadas[temporada] || !serie.temporadas[temporada].episodios[episodio]) return;
-      const ep = serie.temporadas[temporada].episodios[episodio];
-      document.getElementById("tituloVideo").textContent = ep.titulo;
-      const player = document.getElementById("videoPlayer");
-      player.pause();
-      player.removeAttribute("src");
-      player.load();
-
-      if (ep.video) {
-        player.src = ep.video;
-        document.getElementById("avisoVideo").textContent = "Reproduzindo: " + ep.titulo;
-        player.load();
-      } else {
-        document.getElementById("avisoVideo").textContent = "Este episódio ainda não tem um link de vídeo cadastrado.";
-      }
-      mostrarPagina("assistir");
-    }
-
-    function voltarDetalhes() {
-      if (serieAtual) abrirSerie(serieAtual.id);
-      else mostrarPagina("catalogo");
-    }
-
-    function pesquisar() {
-      const termo = document.getElementById("campoBusca").value.toLowerCase().trim();
-      const resultado = series.filter(s =>
-        s.titulo.toLowerCase().includes(termo) ||
-        s.categoria.toLowerCase().includes(termo)
-      );
-      document.getElementById("catalogoCompleto").innerHTML = resultado.length
-        ? resultado.map(cartaoSerie).join("")
-        : "<p>Nenhuma série encontrada.</p>";
-      mostrarPagina("catalogo");
-    }
-
-    window.mostrarPagina = mostrarPagina;
-    window.mostrarFavoritos = mostrarFavoritos;
-    window.pesquisar = pesquisar;
-    window.abrirSerie = abrirSerie;
-    window.alternarFavorito = alternarFavorito;
-    window.reproduzir = reproduzir;
-    window.voltarDetalhes = voltarDetalhes;
-
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js").catch(erro => {
-          console.log("Service Worker não foi registrado:", erro);
-        });
-      });
-    }
-  </script>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-
-    // Esta é a configuração que você já tinha fornecido.
-    const firebaseConfig = {
-      apiKey: "AIzaSyDhQrg_NofWqyNPKkJfOHwmVwSXgjubvWk",
-      authDomain: "uam-plus-f4519.firebaseapp.com",
-      projectId: "uam-plus-f4519",
-      storageBucket: "uam-plus-f4519.firebasestorage.app",
-      messagingSenderId: "617099307712",
-      appId: "1:617099307712:web:4d99dc73c6cb91f89f1b25",
-      measurementId: "G-0LP7M7E9EE"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    window.firebaseApp = app;
-    window.db = db;
-
-    const estaAtivo = valor => valor === true || valor === "true";
-
-    async function carregarDadosFirebase() {
-      const inicio = document.getElementById("inicioCatalogo");
-      const catalogo = document.getElementById("catalogoCompleto");
-
-      try {
-        const [seriesSnap, temporadasSnap, episodiosSnap] = await Promise.all([
-          getDocs(collection(db, "series")),
-          getDocs(collection(db, "temporadas")),
-          getDocs(collection(db, "episodios"))
-        ]);
-
-        const temporadas = temporadasSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-        const episodios = episodiosSnap.docs.map(d => ({ id: d.id, ...d.data() }));
-
-        const dados = seriesSnap.docs
-          .map(d => ({ id: d.id, ...d.data() }))
-          .filter(s => estaAtivo(s.ativo))
-          .map(s => ({
-            id: s.id,
-            titulo: s.nome || "Série sem título",
-            categoria: s.categoria || "Fantasia • Aventura",
-            descricao: s.descricao || "",
-            imagem: s.imagem || s.capa || s.imageUrl || "",
-            temporadas: temporadas
-              .filter(t => t.serieId === s.id)
-              .sort((a, b) => Number(a.numero || 0) - Number(b.numero || 0))
-              .map(t => ({
-                nome: t.nome || "Temporada",
-                episodios: episodios
-                  .filter(e => e.temporadaId === t.id && estaAtivo(e.ativo))
-                  .sort((a, b) => Number(a.numero || 0) - Number(b.numero || 0))
-                  .map(e => ({
-                    titulo: e.nome || "Episódio",
-                    video: e.videoUrl || ""
-                  }))
-              }))
-          }));
-
-        // Atualiza a lista usada por todas as funções do site.
-        series.splice(0, series.length, ...dados);
-        carregarCatalogo();
-
-        const idDestaque = "uma-aventura-milagrosa";
-        if (!dados.some(s => s.id === idDestaque)) {
-          console.info("O ID da série em destaque não foi encontrado. Os cartões do catálogo continuam funcionando.");
-        }
-      } catch (erro) {
-        console.error("Erro ao buscar dados do Firestore:", erro);
-        inicio.innerHTML = "<p class='aviso'>Não foi possível carregar as séries. Confira a conexão com o Firebase e as regras do Firestore.</p>";
-        catalogo.innerHTML = "<p class='aviso'>Não foi possível carregar as séries.</p>";
-        document.getElementById("destaques").innerHTML = "<p class='aviso'>Não foi possível carregar os destaques.</p>";
-      }
-    }
-
-    await carregarDadosFirebase();
-  </script>
+  }catch(err){
+    console.error("Falha ao carregar Firestore:",err);
+    const msg='<p class="empty error">Não foi possível ler o Firestore. Verifique se as regras permitem leitura pública e se os documentos estão no projeto <b>uam-plus-f4519</b>.</p>';
+    targets.forEach(id=>document.getElementById(id).innerHTML=msg);
+  }
+}
+window.showPage=showPage;
+window.showFavorites=showFavorites;
+window.openSeries=openSeries;
+window.toggleFavorite=toggleFavorite;
+window.playEpisode=playEpisode;
+window.backToDetails=backToDetails;
+window.searchSeries=searchSeries;
+window.openFeatured=openFeatured;
+loadFirestore();
+</script>
 </body>
 </html>
