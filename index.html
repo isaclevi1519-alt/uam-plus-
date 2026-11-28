@@ -3,237 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#10091d">
-<title>UAM+ | Streaming</title>
+<meta name="theme-color" content="#160923">
+<title>UAM+ | Uma Aventura Milagrosa</title>
 <style>
-:root{--bg:#09070f;--panel:#171020;--panel2:#21152d;--purple:#8d45d6;--purple2:#c18aff;--gold:#e6c16b;--text:#fffaff;--muted:#bdb1c9;--line:#38264a}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% -10%,#32154a 0,transparent 38%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
-button,input{font:inherit}button{cursor:pointer}
-header{position:sticky;top:0;z-index:20;background:#10091deF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff18;padding:12px clamp(16px,4vw,58px);display:flex;align-items:center;gap:22px;justify-content:space-between}
-.brand{display:flex;align-items:center;gap:10px;min-width:max-content}.brand img{width:43px;height:43px;object-fit:contain}.brand-name{font-size:25px;font-weight:950;letter-spacing:2px;color:var(--gold)}
-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}nav button,.navbtn{background:transparent;color:#e8deef;border:0;padding:10px 12px;border-radius:9px}nav button:hover,nav button.active{background:#ffffff12;color:var(--gold)}
-.search{width:min(250px,27vw);background:#21152d;border:1px solid #59416c;color:white;padding:11px 15px;border-radius:25px;outline:none}.search:focus{border-color:var(--purple2)}
-main{min-height:65vh}.page{display:none}.page.active{display:block}
-.hero{min-height:490px;display:flex;align-items:center;padding:65px clamp(20px,8vw,110px);position:relative;overflow:hidden;background:linear-gradient(90deg,#09070ff5 0%,#09070fc9 48%,#09070f33 100%),radial-gradient(circle at 78% 40%,#8b3db5 0,#35164c 30%,#11091b 65%);border-bottom:1px solid var(--line)}
-.hero:before{content:"🦋  🐞  🐈‍⬛  🐝  🦊  🐢  🦚";position:absolute;right:4%;bottom:28px;font-size:clamp(22px,3vw,38px);letter-spacing:12px;opacity:.65;filter:drop-shadow(0 0 15px #b36cff)}
-.hero-copy{max-width:650px;position:relative;z-index:1}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase}
-h1{font-size:clamp(38px,6.4vw,76px);line-height:1.02;margin:14px 0 18px;letter-spacing:-2px}.hero p{max-width:570px;color:#e3d8eb;line-height:1.7;font-size:16px}
-.btn{border:0;border-radius:9px;padding:13px 19px;font-weight:800;margin:12px 8px 0 0;background:linear-gradient(110deg,#f1d58c,#d6a94c);color:#1b1022;box-shadow:0 8px 25px #0005}.btn.secondary{background:#ffffff12;border:1px solid #ffffff35;color:white;box-shadow:none}.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
-.content{padding:30px clamp(16px,4vw,58px) 55px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 17px}.section-head h2{font-size:22px;margin:0}.section-head small{color:var(--muted)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:18px}
-.card{border:1px solid #ffffff12;background:linear-gradient(160deg,#21162c,#120d19);border-radius:13px;overflow:hidden;cursor:pointer;transition:.22s;min-width:0}.card:hover{transform:translateY(-5px);border-color:#a56ad1;box-shadow:0 14px 35px #0008}
-.poster{height:230px;background:radial-gradient(circle at 50% 35%,#75409b,#271638 60%,#100b16);display:grid;place-items:center;overflow:hidden;color:#f4d990;text-align:center;font-size:22px;font-weight:900;padding:15px}.poster img{width:100%;height:100%;object-fit:cover}.card-info{padding:13px}.card-info h3{font-size:15px;margin:0 0 7px}.card-info p{font-size:12px;color:var(--muted);margin:0}
-.empty,.status{color:var(--muted);padding:18px 0;line-height:1.6}.error{color:#ffb7b7}
-.detail-wrap{padding:30px clamp(16px,6vw,85px) 60px}.back{border:0;background:none;color:var(--gold);padding:10px 0 20px;font-weight:700}.detail-hero{display:grid;grid-template-columns:minmax(180px,280px) 1fr;gap:28px;align-items:start}.detail-poster{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:14px;background:#241432;border:1px solid var(--line)}.detail-copy h1{font-size:clamp(30px,5vw,52px)}.detail-copy p{color:var(--muted);line-height:1.7;max-width:720px}
-.season{margin-top:32px}.season h3{color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:12px}.episode{display:flex;justify-content:space-between;align-items:center;gap:14px;background:var(--panel);border:1px solid #ffffff12;padding:14px 16px;border-radius:10px;margin:9px 0}.episode button{border:0;background:#8d45d6;color:white;border-radius:7px;padding:9px 13px;font-weight:700}
-.player{max-width:1000px;margin:auto;padding:30px 18px 60px}.player video{width:100%;max-height:68vh;background:#000;border-radius:14px;border:1px solid var(--line)}.player h2{margin-top:20px}
-footer{text-align:center;padding:30px 15px;background:#100a17;border-top:1px solid var(--line);color:var(--muted)}footer strong{color:var(--gold);letter-spacing:2px}
-.loading{display:flex;align-items:center;gap:12px;color:var(--muted)}.dot{width:8px;height:8px;border-radius:50%;background:var(--purple2);box-shadow:0 0 14px var(--purple2)}
-@media(max-width:760px){header{gap:10px;flex-wrap:wrap;justify-content:center}nav{order:3;width:100%;justify-content:center}.search{width:100%;max-width:360px}.hero{min-height:430px;padding:48px 22px}.hero:before{right:0;letter-spacing:3px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.poster{height:190px}.detail-hero{grid-template-columns:1fr}.detail-poster{max-width:210px}.episode{align-items:flex-start}.episode button{white-space:nowrap}}
+:root{--bg:#090610;--panel:#171020;--panel2:#21152e;--purple:#8d45c7;--purple2:#4b236d;--gold:#e4c477;--text:#fff9ff;--muted:#c6b8ce;--line:#49305c;--red:#e34e68}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(rgba(9,6,16,.88),rgba(9,6,16,.96)),url('fundo-uam.jpg') center top/cover fixed,radial-gradient(ellipse at 50% -15%,#3a1d51 0,#120b1b 42%,var(--bg) 78%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.15;background-image:radial-gradient(#e4c477 1px,transparent 1px),radial-gradient(#b66cff 1px,transparent 1px);background-size:57px 57px,91px 91px;background-position:0 0,25px 35px}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:20px;padding:12px clamp(14px,4vw,56px);background:rgba(10,6,16,.91);backdrop-filter:blur(18px);border-bottom:1px solid #6e4a83}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:max-content}
+.brand img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 12px #a45ad9)}
+.brand strong{font-size:25px;letter-spacing:2px;color:var(--gold)}
+.nav{display:flex;align-items:center;gap:7px;flex:1;flex-wrap:wrap}
+.nav button,.icon-btn{border:0;background:transparent;color:#eee2f5;padding:10px 12px;border-radius:22px}
+.nav button:hover,.nav button.active{background:#39234c;color:var(--gold)}
+.search-wrap{display:flex;align-items:center;gap:8px;background:#21172b;border:1px solid #634778;border-radius:30px;padding:0 14px;min-width:210px}
+.search-wrap input{width:100%;background:transparent;border:0;outline:0;color:white;padding:11px 0}
+.search-wrap input::placeholder{color:#bbaac7}
+.mobile-menu{display:none}
+main{max-width:1500px;margin:auto;padding:24px clamp(14px,4vw,56px) 70px}
+.page{display:none;animation:appear .35s ease}
+.page.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.hero{position:relative;overflow:hidden;min-height:460px;border:1px solid #79528f;border-radius:26px;background:linear-gradient(90deg,rgba(8,5,14,.98) 0%,rgba(19,9,29,.82) 48%,rgba(24,9,37,.22) 100%),url('banner-uam.jpg') center/cover,radial-gradient(ellipse at 78% 42%,#8c4eb1 0,#46205f 34%,#100819 76%);box-shadow:0 24px 70px #0009}
+.hero:before{content:"🦋  ✦  🐞";position:absolute;right:5%;top:12%;font-size:clamp(26px,5vw,55px);opacity:.8;filter:drop-shadow(0 0 12px #d7a9ff);animation:float 5s ease-in-out infinite}
+.hero:after{content:"♛  🦚  ✧  🐈‍⬛";position:absolute;right:5%;bottom:12%;font-size:clamp(20px,3vw,35px);opacity:.62}
+@keyframes float{50%{transform:translateY(-13px) rotate(5deg)}}
+.hero-content{position:relative;z-index:1;max-width:690px;padding:clamp(30px,6vw,76px)}
+.kicker{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-size:clamp(38px,6vw,70px);line-height:1.02;margin:14px 0;color:#fff;text-shadow:0 5px 24px #000}
+.hero p{color:#eee2f5;line-height:1.8;max-width:590px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{border:1px solid transparent;border-radius:25px;padding:12px 19px;font-weight:750;background:linear-gradient(120deg,#f1d994,#c59b4e);color:#20132a;box-shadow:0 8px 25px #0005}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.secondary{background:#271a35;border-color:#79528f;color:#fff}
+.btn.ghost{background:transparent;border-color:#89649b;color:#f7eaff}
+.section{margin-top:38px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
+.section h2,.page-title{font-size:clamp(22px,3vw,30px);margin:0;color:#fff}
+.section-head small,.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:17px}
+.card{min-width:0;overflow:hidden;border:1px solid #3b2949;border-radius:15px;background:linear-gradient(155deg,#21152d,#100b17);transition:.22s;cursor:pointer;position:relative}
+.card:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 14px 34px #0008}
+.poster{height:235px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;background:linear-gradient(145deg,#7842a0,#2d1740 55%,#100a16);overflow:hidden}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.poster:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#08050ddc)}
+.poster-title{position:relative;z-index:1;font:700 21px Georgia,serif;color:#fff;text-shadow:0 2px 10px #000}
+.poster .soon{position:absolute;z-index:2;top:12px;right:10px;background:#e7c979;color:#26162f;border-radius:20px;padding:6px 10px;font-size:10px;font-weight:900;letter-spacing:1px}
+.card-info{padding:12px 13px}
+.card-info h3{font-size:15px;margin:0 0 6px;line-height:1.35}
+.card-info p{font-size:12px;color:var(--muted);margin:0}
+.decor-row{display:flex;justify-content:center;gap:clamp(15px,4vw,44px);flex-wrap:wrap;margin:25px 0;color:#d9b9f4;font-size:25px;opacity:.9}
+.welcome{max-width:1000px;margin:0 auto;background:linear-gradient(145deg,#21142eeb,#100a18f5);border:1px solid #68467e;border-radius:24px;padding:clamp(22px,5vw,55px);box-shadow:0 20px 60px #0007}
+.welcome h1{font:clamp(30px,5vw,48px) Georgia,serif;color:var(--gold);margin-top:8px}
+.welcome p{color:#e4d9ea;line-height:1.95;font-size:15px}
+.welcome .signature{font:italic 21px Georgia,serif;color:var(--gold);text-align:center;margin-top:30px}
+.details-layout{display:grid;grid-template-columns:minmax(190px,300px) 1fr;gap:28px;align-items:start}
+.detail-poster{min-height:370px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#8044a4,#241233);display:grid;place-items:center;text-align:center;padding:20px;font:28px Georgia,serif}
+.detail-poster img{width:100%;height:100%;max-height:480px;object-fit:cover}
+.detail-copy p{line-height:1.8;color:#d6c9df}
+.pill{display:inline-block;border:1px solid #76548a;border-radius:20px;padding:6px 11px;color:#e9d5fa;font-size:12px;margin:4px 5px 4px 0}
+.episode{display:grid;grid-template-columns:145px 1fr auto;gap:14px;align-items:center;padding:12px;background:#1b1225;border:1px solid #49305c;border-radius:14px;margin:10px 0}
+.episode-art{height:82px;border-radius:9px;background:linear-gradient(135deg,#71409a,#21122e);display:grid;place-items:center;text-align:center;font-weight:800;color:#f7e8ff;position:relative;overflow:hidden}
+.episode-art:after{content:"EM BREVE";position:absolute;bottom:6px;left:8px;right:8px;text-align:center;background:#e4c477;color:#211329;font-size:10px;letter-spacing:1px;border-radius:12px;padding:4px}
+.episode h3{margin:0 0 5px;font-size:15px}
+.episode p{margin:0;color:var(--muted);font-size:12px}
+.episode button{white-space:nowrap}
+.empty{padding:25px;border:1px dashed #654a78;border-radius:15px;color:var(--muted);text-align:center}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+.toolbar input,.toolbar select,.field{background:#21172b;color:white;border:1px solid #624577;border-radius:12px;padding:11px 13px;outline:0}
+.player-box{max-width:1000px;margin:auto;background:#120c19;border:1px solid #593c6c;border-radius:18px;padding:18px}
+video{width:100%;max-height:65vh;background:#000;border-radius:12px}
+.player-controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.player-controls button{background:#2c1d39;color:#fff;border:1px solid #76548a;border-radius:20px;padding:9px 13px}
+.profile-box{max-width:650px;background:#1b1225;border:1px solid #5c4070;border-radius:18px;padding:24px}
+.avatar{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;font-size:36px;background:linear-gradient(140deg,#8e50bd,#2c1740);border:2px solid var(--gold)}
+.field{display:block;width:100%;margin:8px 0 15px}
+.notice{position:fixed;right:18px;bottom:18px;z-index:50;background:#21142d;border:1px solid var(--gold);border-radius:12px;padding:13px 17px;box-shadow:0 10px 30px #0009;display:none;max-width:min(360px,90vw)}
+footer{text-align:center;color:#bdaec7;padding:35px 15px;border-top:1px solid #382447;background:#0d0813}
+footer strong{color:var(--gold);letter-spacing:2px}
+.sparkles{color:#e4c477}
+@media(max-width:850px){.topbar{flex-wrap:wrap}.nav{order:3;flex-basis:100%;justify-content:center}.search-wrap{margin-left:auto;min-width:160px}.hero{min-height:410px}.details-layout{grid-template-columns:1fr}.detail-poster{min-height:260px;max-height:360px}}
+@media(max-width:560px){.topbar{gap:8px;padding:9px 12px}.brand img{width:39px;height:39px}.brand strong{font-size:21px}.nav{gap:2px}.nav button{padding:8px 9px;font-size:12px}.search-wrap{order:2;flex-basis:100%;margin:0}.hero{min-height:420px}.hero-content{padding:28px 22px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.poster{height:190px}.episode{grid-template-columns:95px 1fr;gap:10px}.episode-art{height:76px}.episode button{grid-column:1/-1;width:100%}.welcome p{font-size:14px}}
 </style>
 </head>
 <body>
-<header>
-  <div class="brand"><img src="1794969678965.png" alt="UAM+"><span class="brand-name">UAM+</span></div>
-  <nav>
-    <button class="active" id="nav-inicio" onclick="showPage('home')">Início</button>
-    <button id="nav-catalogo" onclick="showPage('catalog')">Séries</button>
-    <button id="nav-favoritos" onclick="showFavorites()">Minha lista</button>
+<header class="topbar">
+  <a class="brand" href="#" onclick="go('inicio');return false">
+    <img src="1794969678965.png" alt="Logo UAM+" onerror="this.style.display='none'">
+    <strong>UAM+</strong>
+  </a>
+  <nav class="nav" aria-label="Navegação principal">
+    <button class="active" data-page="inicio" onclick="go('inicio')">Início</button>
+    <button data-page="series" onclick="go('series')">Séries</button>
+    <button data-page="filmes" onclick="go('filmes')">Filmes</button>
+    <button data-page="especiais" onclick="go('especiais')">Especiais</button>
+    <button data-page="novidades" onclick="go('novidades')">Novidades</button>
+    <button data-page="welcome" onclick="go('welcome')">Boas-vindas</button>
+    <button data-page="trailers" onclick="go('trailers')">Trailers</button>
+    <button data-page="favoritos" onclick="go('favoritos')">♡ Minha lista</button>
+    <button data-page="perfil" onclick="go('perfil')">Perfil</button>
   </nav>
-  <input class="search" id="searchInput" type="search" placeholder="Buscar séries e aventuras..." oninput="searchSeries()">
+  <label class="search-wrap">⌕ <input id="search" type="search" placeholder="Buscar no UAM+" oninput="searchContent(this.value)"></label>
 </header>
 
 <main>
-<section id="home" class="page active">
-  <div class="hero">
-    <div class="hero-copy">
-      <div class="eyebrow">✦ Um universo de histórias ✦</div>
-      <h1>Histórias extraordinárias começam aqui.</h1>
-      <p>Entre em mundos de magia, mistério, aventura e fantasia. Descubra suas séries favoritas no UAM+.</p>
-      <button class="btn" onclick="openFeatured()">▶ Explorar destaque</button>
-      <button class="btn secondary" onclick="showPage('catalog')">Ver catálogo</button>
+<section id="inicio" class="page active">
+  <div class="hero" id="hero">
+    <div class="hero-content">
+      <div class="kicker">✦ Um universo de magia começa aqui ✦</div>
+      <h1>Uma Aventura<br>Milagrosa</h1>
+      <p>Bem-vindo ao UAM+, o seu lugar para descobrir histórias extraordinárias, personagens inesquecíveis e aventuras que atravessam a imaginação. Prepare-se para conhecer um universo onde cada joia guarda um segredo, cada escolha pode mudar o destino e a coragem aparece quando alguém decide fazer a diferença. Entre mistérios, fantasia, amizade, humor e grandes desafios, cada capítulo abre as portas para uma nova descoberta. Explore nossos catálogos, conheça os personagens, acompanhe as novidades e encontre sua próxima história favorita. Este espaço foi criado para reunir o mundo de Uma Aventura Milagrosa em uma experiência especial, com novidades, episódios, filmes, especiais e trailers organizados em um só lugar. Acomode-se, escolha sua aventura e aproveite a experiência UAM+.</p>
+      <div class="actions">
+        <button class="btn" onclick="openSeries('uam')">▶ Conhecer a série</button>
+        <button class="btn secondary" onclick="go('series')">Explorar catálogo</button>
+        <button class="btn ghost" onclick="go('novidades')">Ver novidades</button>
+      </div>
     </div>
   </div>
-  <div class="content">
-    <div class="section-head"><h2>Em destaque ✨</h2><small>UAM+ Originals</small></div>
-    <div class="grid" id="featured"><p class="status">Conectando ao catálogo...</p></div>
-    <div class="section-head" style="margin-top:38px"><h2>Continue explorando</h2><small>Todo o universo UAM+</small></div>
-    <div class="grid" id="homeCatalog"><p class="status">Carregando...</p></div>
-  </div>
+  <div class="decor-row" aria-label="Elementos decorativos">🦚　🦋　🐞　🐈‍⬛　🐝　🦊　🐢　❄️　🎄</div>
+  <section class="section"><div class="section-head"><h2>✦ Destaques</h2><small>Histórias em evidência</small></div><div class="grid" id="homeHighlights"></div></section>
+  <section class="section"><div class="section-head"><h2>Novidades recentes</h2><button class="btn ghost" onclick="go('novidades')">Ver tudo</button></div><div class="grid" id="homeNews"></div></section>
+  <section class="section"><div class="section-head"><h2>Continue assistindo</h2><small>Seu histórico neste dispositivo</small></div><div class="grid" id="continueGrid"></div></section>
+  <section class="section"><div class="section-head"><h2>Mais do universo UAM+</h2><small>Explore os catálogos</small></div><div class="grid" id="homeAll"></div></section>
 </section>
 
-<section id="catalog" class="page">
-  <div class="content">
-    <div class="section-head"><h2>Catálogo completo</h2><small>Suas próximas aventuras</small></div>
-    <div class="grid" id="catalogGrid"><p class="status">Carregando catálogo...</p></div>
-  </div>
+<section id="series" class="page">
+  <h1 class="page-title">Séries</h1><p class="muted">Todas as séries disponíveis no universo UAM+.</p>
+  <div class="toolbar"><select id="genreFilter" onchange="renderCatalogs()"><option value="">Todos os gêneros</option><option>Fantasia</option><option>Aventura</option><option>Mistério</option><option>Comédia</option><option>Ação</option></select></div>
+  <div class="grid" id="seriesGrid"></div>
 </section>
-
-<section id="details" class="page">
-  <div class="detail-wrap">
-    <button class="back" onclick="showPage('catalog')">← Voltar ao catálogo</button>
-    <div id="detailsContent"></div>
-  </div>
+<section id="filmes" class="page"><h1 class="page-title">Filmes</h1><p class="muted">Filmes e longas especiais do UAM+.</p><div class="grid" id="moviesGrid"></div></section>
+<section id="especiais" class="page"><h1 class="page-title">Especiais</h1><p class="muted">Eventos, episódios especiais e histórias extras.</p><div class="grid" id="specialsGrid"></div></section>
+<section id="novidades" class="page"><h1 class="page-title">Novidades</h1><p class="muted">Acompanhe os conteúdos e anúncios mais recentes.</p><div class="grid" id="newsGrid"></div></section>
+<section id="trailers" class="page"><h1 class="page-title">Trailers</h1><p class="muted">Prévia dos próximos conteúdos. Trailers adicionados ao Firebase aparecerão aqui.</p><div class="grid" id="trailersGrid"></div></section>
+<section id="favoritos" class="page"><h1 class="page-title">♡ Minha lista</h1><p class="muted">Seus conteúdos favoritos.</p><div class="grid" id="favoritesGrid"></div></section>
+<section id="perfil" class="page">
+  <h1 class="page-title">Meu perfil</h1><p class="muted">Seu perfil e suas preferências neste dispositivo.</p>
+  <div class="profile-box"><div class="avatar" id="avatar">🦋</div><label for="profilePhoto">Foto do perfil (URL de imagem)</label><input class="field" id="profilePhoto" type="url" placeholder="https://..."><label for="profileName">Nome do perfil</label><input class="field" id="profileName" maxlength="35" placeholder="Como deseja ser chamado?"><label for="profileAvatar">Escolha um avatar</label><select class="field" id="profileAvatar"><option>🦋</option><option>🐞</option><option>🐈‍⬛</option><option>🦊</option><option>🐝</option><option>🐢</option><option>🦚</option></select><button class="btn" onclick="saveProfile()">Salvar perfil</button><h3>Preferências</h3><p class="muted">O UAM+ pode avisar sobre novidades quando você permitir notificações no navegador.</p><button class="btn secondary" onclick="enableNotifications()">Ativar notificações</button><h3>Histórico</h3><button class="btn ghost" onclick="clearHistory()">Limpar histórico deste dispositivo</button></div>
 </section>
-
-<section id="favorites" class="page">
-  <div class="content">
-    <div class="section-head"><h2>Minha lista ♥</h2></div>
-    <div class="grid" id="favoritesGrid"></div>
-  </div>
+<section id="welcome" class="page">
+  <div class="welcome"><div class="kicker">✦ Bem-vindo ao UAM+ ✦</div><h1>Uma nova aventura espera por você</h1>
+  <p>Seja muito bem-vindo ao UAM+, uma plataforma criada para celebrar o universo de Uma Aventura Milagrosa e reunir, em um só lugar, histórias de fantasia, aventura, mistério, ação e comédia. Aqui, cada detalhe faz parte de uma experiência pensada para quem gosta de descobrir mundos, acompanhar personagens e se surpreender a cada nova história.</p>
+  <p>Ao explorar o aplicativo, você encontrará áreas dedicadas às séries, aos filmes, aos especiais, às novidades e aos trailers. Cada catálogo tem seu próprio espaço para que você encontre os conteúdos com facilidade. Na página de detalhes, poderá conhecer a sinopse, os gêneros, as temporadas e os episódios de cada produção. Você também poderá guardar seus títulos favoritos, consultar o histórico neste dispositivo e acompanhar os conteúdos que forem chegando ao UAM+.</p>
+  <p>O universo de Uma Aventura Milagrosa é representado por símbolos e elementos especiais: a borboleta, a joaninha, o gato preto, a abelha, a raposa, a tartaruga e o pavão. Eles aparecem como detalhes decorativos da identidade visual, acompanhados de uma atmosfera roxa, preta e dourada, brilho mágico e pequenos enfeites de Natal.</p>
+  <p>Este é um espaço em constante construção. Alguns conteúdos podem aparecer com a indicação “EM BREVE” enquanto suas capas, episódios ou vídeos estão sendo preparados. Assim, você já pode conhecer a organização do catálogo e voltar para acompanhar as novidades. Obrigado por fazer parte do começo desta aventura. Escolha uma seção, explore com calma e aproveite sua visita.</p>
+  <div class="signature">UAM+ — histórias que despertam a imaginação.</div><div class="actions"><button class="btn" onclick="go('inicio')">Entrar no UAM+</button></div></div>
 </section>
-
-<section id="watch" class="page">
-  <div class="player">
-    <button class="back" onclick="backToDetails()">← Voltar para a série</button>
-    <h2 id="videoTitle">Assistir episódio</h2>
-    <video id="videoPlayer" controls playsinline preload="metadata">Seu navegador não suporta vídeo.</video>
-    <p class="status" id="videoMessage">O episódio será reproduzido aqui.</p>
-  </div>
-</section>
+<section id="details" class="page"><button class="btn ghost" onclick="go('series')">← Voltar ao catálogo</button><div id="detailContent" style="margin-top:20px"></div></section>
+<section id="playerPage" class="page"><button class="btn ghost" onclick="backFromPlayer()">← Voltar</button><div class="player-box" style="margin-top:18px"><div class="kicker">UAM+ PLAYER</div><h2 id="playerTitle">Reproduzindo</h2><video id="videoPlayer" controls playsinline></video><div class="player-controls"><button onclick="skipVideo(-10)">↶ 10 segundos</button><button onclick="skipVideo(10)">10 segundos ↷</button><button onclick="toggleFullscreen()">⛶ Tela cheia</button><button onclick="playNext()">Próximo episódio →</button></div><p class="muted" id="playerMessage">Quando um vídeo estiver cadastrado, ele será reproduzido aqui.</p></div></section>
 </main>
-
-<footer><strong>UAM+</strong><p>Uma Aventura Milagrosa</p><small>🦋 🐞 🐈‍⬛ 🐝 🦊 🐢 🦚 · Um universo de aventuras</small></footer>
+<footer><strong>UAM+</strong><p>Uma Aventura Milagrosa</p><small>Fantasia • Aventura • Mistério • Ação • Comédia</small><div class="decor-row">🦋　🐞　🐈‍⬛　🐝　🦊　🐢　🦚　🎄</div></footer>
+<div class="notice" id="notice"></div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import {getFirestore,collection,getDocs} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
-/* Este é o projeto Firebase que já está configurado no index.html publicado. */
-const firebaseConfig = {
-  apiKey: "AIzaSyDhQrg_NofWqyNPKkJfOHwmVwSXgjubvWk",
-  authDomain: "uam-plus-f4519.firebaseapp.com",
-  projectId: "uam-plus-f4519",
-  storageBucket: "uam-plus-f4519.firebasestorage.app",
-  messagingSenderId: "617099307712",
-  appId: "1:617099307712:web:4d99dc73c6cb91f89f1b25",
-  measurementId: "G-0LP7M7E9EE"
-};
+/* Firebase: projectId uam-plus, conforme o ID confirmado no projeto.
+   As regras do Firestore precisam permitir leitura pública nas coleções exibidas. */
+const firebaseConfig={projectId:"uam-plus"};
+let db=null;
+try{const app=initializeApp(firebaseConfig);db=getFirestore(app);window.uamFirebaseStatus="Conectando ao Firestore…";}
+catch(e){console.error("Firebase:",e);window.uamFirebaseStatus="Não foi possível iniciar o Firebase.";}
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-let series = [];
-let currentSeries = null;
-let previousPage = "details";
-const active = value => value !== false && value !== "false";
-const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-
-function showPage(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-  const navId = id==="home"?"nav-inicio":id==="catalog"?"nav-catalogo":id==="favorites"?"nav-favoritos":null;
-  if(navId) document.getElementById(navId).classList.add("active");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-function card(s){
-  const cover=s.imagem ? `<img src="${safe(s.imagem)}" alt="Capa de ${safe(s.titulo)}" onerror="this.parentElement.innerHTML='🦋<br>${safe(s.titulo)}'">` : `🦋<br>${safe(s.titulo)}`;
-  return `<article class="card" onclick="openSeries('${safe(s.id)}')"><div class="poster">${cover}</div><div class="card-info"><h3>${safe(s.titulo)}</h3><p>${safe(s.categoria)}</p></div></article>`;
-}
-function paintCatalog(){
-  const markup=series.map(card).join("");
-  const empty='<p class="empty">Ainda não há séries publicadas neste catálogo.</p>';
-  document.getElementById("featured").innerHTML=markup||empty;
-  document.getElementById("homeCatalog").innerHTML=markup||empty;
-  document.getElementById("catalogGrid").innerHTML=markup||empty;
-}
-function openSeries(id){
-  const s=series.find(x=>x.id===id);
-  if(!s){alert("Esta série ainda não foi carregada.");return;}
-  currentSeries=s;
-  const favs=JSON.parse(localStorage.getItem("uam_favoritos")||"[]");
-  const isFav=favs.includes(id);
-  let out=`<div class="detail-hero"><div>${s.imagem?`<img class="detail-poster" src="${safe(s.imagem)}" alt="Capa">`:`<div class="detail-poster" style="display:grid;place-items:center;font-size:70px">🦋</div>`}</div><div class="detail-copy"><div class="eyebrow">UAM+ ORIGINAL</div><h1>${safe(s.titulo)}</h1><p>${safe(s.categoria)}</p><p>${safe(s.descricao)}</p><button class="btn" onclick="toggleFavorite('${safe(id)}')">${isFav?"★ Remover da minha lista":"☆ Adicionar à minha lista"}</button></div></div>`;
-  if(!s.temporadas.length) out+='<p class="empty">Temporadas ainda não cadastradas.</p>';
-  s.temporadas.forEach((t,ti)=>{
-    out+=`<div class="season"><h3>${safe(t.nome)}</h3>`;
-    if(!t.episodios.length) out+='<p class="empty">Nenhum episódio publicado nesta temporada.</p>';
-    t.episodios.forEach((e,ei)=>{out+=`<div class="episode"><span>${safe(e.titulo)}</span><button onclick="playEpisode(${ti},${ei})">▶ Assistir</button></div>`;});
-    out+='</div>';
-  });
-  document.getElementById("detailsContent").innerHTML=out;
-  showPage("details");
-}
-function toggleFavorite(id){
-  let f=JSON.parse(localStorage.getItem("uam_favoritos")||"[]");
-  f=f.includes(id)?f.filter(x=>x!==id):[...f,id];
-  localStorage.setItem("uam_favoritos",JSON.stringify(f));
-  openSeries(id);
-}
-function showFavorites(){
-  const f=JSON.parse(localStorage.getItem("uam_favoritos")||"[]");
-  const chosen=series.filter(s=>f.includes(s.id));
-  document.getElementById("favoritesGrid").innerHTML=chosen.length?chosen.map(card).join():'<p class="empty">Você ainda não adicionou séries à sua lista.</p>';
-  showPage("favorites");
-}
-function playEpisode(ti,ei){
-  if(!currentSeries)return;
-  const ep=currentSeries.temporadas[ti]?.episodios[ei];
-  if(!ep)return;
-  previousPage="details";
-  const player=document.getElementById("videoPlayer");
-  player.pause();player.removeAttribute("src");player.load();
-  document.getElementById("videoTitle").textContent=ep.titulo;
-  if(ep.video){player.src=ep.video;document.getElementById("videoMessage").textContent="Agora assistindo: "+ep.titulo;player.load();}
-  else document.getElementById("videoMessage").textContent="Este episódio ainda não tem um endereço de vídeo cadastrado.";
-  showPage("watch");
-}
-function backToDetails(){if(currentSeries)openSeries(currentSeries.id);else showPage("catalog");}
-function searchSeries(){
-  const term=document.getElementById("searchInput").value.trim().toLocaleLowerCase("pt-BR");
-  const result=series.filter(s=>(s.titulo+" "+s.categoria+" "+s.descricao).toLocaleLowerCase("pt-BR").includes(term));
-  document.getElementById("catalogGrid").innerHTML=result.length?result.map(card).join(""):'<p class="empty">Nenhuma série encontrada. Tente outro nome.</p>';
-  showPage("catalog");
-}
-function openFeatured(){if(series.length)openSeries(series[0].id);else showPage("catalog");}
-
-async function loadFirestore(){
-  const targets=["featured","homeCatalog","catalogGrid"];
-  targets.forEach(id=>document.getElementById(id).innerHTML='<p class="loading"><span class="dot"></span> Carregando catálogo...</p>');
-  try{
-    const [ss,ts,es]=await Promise.all([
-      getDocs(collection(db,"series")),
-      getDocs(collection(db,"temporadas")),
-      getDocs(collection(db,"episodios"))
-    ]);
-    const seasons=ts.docs.map(d=>({id:d.id,...d.data()}));
-    const episodes=es.docs.map(d=>({id:d.id,...d.data()}));
-    series=ss.docs.map(d=>({id:d.id,...d.data()}))
-      .filter(s=>active(s.ativo))
-      .map(s=>({
-        id:s.id,titulo:s.nome||s.titulo||"Série sem título",
-        categoria:s.categoria||"Fantasia • Aventura",
-        descricao:s.descricao||"",
-        imagem:s.imagem||s.capa||s.imageUrl||"",
-        temporadas:seasons.filter(t=>t.serieId===s.id&&active(t.ativo))
-          .sort((a,b)=>Number(a.numero||0)-Number(b.numero||0))
-          .map(t=>({
-            nome:t.nome||("Temporada "+(t.numero||"")),
-            episodios:episodes.filter(e=>e.temporadaId===t.id&&active(e.ativo))
-              .sort((a,b)=>Number(a.numero||0)-Number(b.numero||0))
-              .map(e=>({titulo:e.nome||e.titulo||"Episódio",video:e.videoUrl||e.video||""}))
-          }))
-      }));
-    paintCatalog();
-    if(!series.length){
-      const msg='<p class="empty">O Firebase conectou, mas a coleção <b>series</b> deste projeto está vazia ou todos os documentos estão desativados.</p>';
-      targets.forEach(id=>document.getElementById(id).innerHTML=msg);
-    }
-  }catch(err){
-    console.error("Falha ao carregar Firestore:",err);
-    const msg='<p class="empty error">Não foi possível ler o Firestore. Verifique se as regras permitem leitura pública e se os documentos estão no projeto <b>uam-plus-f4519</b>.</p>';
-    targets.forEach(id=>document.getElementById(id).innerHTML=msg);
-  }
-}
-window.showPage=showPage;
-window.showFavorites=showFavorites;
-window.openSeries=openSeries;
-window.toggleFavorite=toggleFavorite;
-window.playEpisode=playEpisode;
-window.backToDetails=backToDetails;
-window.searchSeries=searchSeries;
-window.openFeatured=openFeatured;
-loadFirestore();
-</script>
-</body>
-</html>
+const fallbackSeries=[{
+ id:"uam",titulo:"Uma Aventura Milagrosa",categoria:"Fantasia • Aventura • Mistério",descricao:"Uma história de magia, mistério, amizade, heróis e poderes extraordinários. Em Paris, segredos antigos começam a despertar e uma nova aventura está prestes a mudar tudo.",imagem:"1794969678965.png",banner:"banner-uam.jpg",tipo:"serie",temporadas:[{id:"temporada-1",nome:"Temporada 1",episodios:[
+ {id:"ep1",titulo:"Episódio 1 — O Despertar dos Miraculous",video:"",emBreve:true},
+ {id:"ep2",titulo:"Episódio 2",video:"",emBreve:true}
+ ]}]
+}];
+let series=[...fallbackSeries],movies=[],specials=[],news=[],trailers=[];
+let currentContent=null,currentEpisode=null,currentEpisodes=[];
+const $=id=>document.getElementById(id);
+const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const read=(key,def=[])=>{try{return JSON.parse(localStorage.getItem(key)||JSON.stringify(def));}catch{return def;}};
+function notify(msg){const n=$("notice");n.textContent=msg;n.style.display="block";setTimeout(()=>n.style.display="none",2800);}
+function isActive(d){retur
