@@ -69,6 +69,7 @@ const firebaseConfig = {
     };
 
     const app = initializeApp(firebaseConfig);
+    console.log("Firebase iniciado!");
     const auth = getAuth(app);
     const db = getFirestore(app);
     const provider = new GoogleAuthProvider();
